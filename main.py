@@ -1059,9 +1059,35 @@ from tkinter import *
 # window.mainloop()
 
 #################### Buttons ####################
+from tkinter import *
 
+
+count = 0
 # button = you click it , then it does stuff.
+def click():
+    global count
+    count += 1
+    print(count)
+    if count == 10:
+        exit()
 
+
+window = Tk()
+photo = PhotoImage(file="Like.PNG")
+
+button = Button(master=window,
+                text="Click ME !",
+                command=click,
+                font=("Comic Sans",30),
+                fg="#8c0000",
+                bg="black",
+                activeforeground="#8c0110",
+                activebackground="black",
+                image=photo,
+                compound="center")
+button.pack()
+
+window.mainloop()
 
 
 
