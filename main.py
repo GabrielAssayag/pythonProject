@@ -1025,19 +1025,42 @@ from tkinter import *
 # widget = GUI elements: buttons, textboxes, labels, images
 # windows = serves as a container to hold or contain these widgets
 
-window = Tk() # instantiate an instance of a window
-window.geometry("420x420") # measurement
-window.title("VC") # change window title
+# window = Tk() # instantiate an instance of a window
+# window.geometry("420x420") # measurement
+# window.title("VC") # change window title
+#
+# icon = PhotoImage(file='voicentericon.png') # convort to photo image # changing icon
+# window.iconphoto(True,icon)
+# window.config(background="black") # "#000000"
+#
+#
+# window.mainloop() # place window on computer screen. listens for events
+#################### Labels ####################
+# from tkinter import *
+#
+# # label = an area widget that holds text and / or an image within a window
+#
+# window = Tk()
+# window.geometry("1420x1420")
+# photo = PhotoImage(file="sharingan.png")
+# label = Label(master=window,
+#               text="Hello World!",
+#               font=('Ariel',40,'bold'),
+#               fg='#8b0000',
+#               bg='black',
+#               relief=SUNKEN,
+#               bd=10,
+#               padx=4,
+#               pady=8,
+#               image=photo,
+#               compound="bottom")
+# label.pack()
+# # label.place(x=0,y=0)
+# window.mainloop()
 
-icon = PhotoImage(file='voicentericon.png') # convort to photo image # changing icon
-window.iconphoto(True,icon)
-window.config(background="black") # "#000000"
+#################### Buttons ####################
 
-
-window.mainloop() # place window on computer screen. listens for events
-
-
-
+# button = you click it , then it does stuff.
 
 
 
