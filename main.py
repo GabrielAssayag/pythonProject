@@ -1059,38 +1059,71 @@ from tkinter import *
 # window.mainloop()
 
 #################### Buttons ####################
+# from tkinter import *
+#
+#
+# count = 0
+# # button = you click it , then it does stuff.
+# def click():
+#     global count
+#     count += 1
+#     print(count)
+#     if count == 10:
+#         exit()
+#
+#
+# window = Tk()
+# photo = PhotoImage(file="Like.PNG")
+#
+# button = Button(master=window,
+#                 text="Click ME !",
+#                 command=click,
+#                 font=("Comic Sans",30),
+#                 fg="#8c0000",
+#                 bg="black",
+#                 activeforeground="#8c0110",
+#                 activebackground="black",
+#                 image=photo,
+#                 compound="center")
+# button.pack()
+#
+# window.mainloop()
+#
+#
+#################### Entrybox ####################
 from tkinter import *
+# entry widget = textbox that accepts a single line of user input
 
+def submit():
+    username = entry.get()
+    print(f"Hello {username}")
+    entry.config(state=DISABLED)
+def delete():
+    entry.delete(0,END)
 
-count = 0
-# button = you click it , then it does stuff.
-def click():
-    global count
-    count += 1
-    print(count)
-    if count == 10:
-        exit()
-
-
+def backspace():
+    entry.delete(len(entry.get())-1 ,END)
 window = Tk()
-photo = PhotoImage(file="Like.PNG")
 
-button = Button(master=window,
-                text="Click ME !",
-                command=click,
-                font=("Comic Sans",30),
-                fg="#8c0000",
-                bg="black",
-                activeforeground="#8c0110",
-                activebackground="black",
-                image=photo,
-                compound="center")
-button.pack()
+entry = Entry(window,
+              font=("Ariel",15),
+              fg="#00FF00",
+              bg="black",
+              show="*")
+# entry.insert(0,"Spongebob")
+entry.pack(side=LEFT)
+
+submit_button = Button(window,text="Submit",command=submit)
+submit_button.pack(side=RIGHT)
+
+delete_button = Button(window,text="Delete",command=delete)
+delete_button.pack(side=RIGHT)
+
+backspace_button = Button(window,text="backspace",command=backspace)
+backspace_button.pack(side=RIGHT)
+
 
 window.mainloop()
-
-
-
 
 
 
