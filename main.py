@@ -1019,300 +1019,43 @@
 # desc_cities = {key: ("Warm" if value >=40 else "COLD") for (key,value) in cities.items()}
 # print(desc_cities)
 
-####################
-#
-# Freshly Made Pizzas
-# Create a Pizza class with the attributes order_number and ingredients
-# (which is given as a list). Only the ingredients will be given as input.
-#
-# You should also make it so that its possible to choose a ready made pizza
-# flavour rather than typing out the ingredients manually! As well as creating
-# this Pizza class, hard-code the following pizza flavours.
-#
-# Name	Ingredients
-# hawaiian	ham, pineapple
-# meat_festival	beef, meatball, bacon
-# garden_feast	spinach, olives, mushroom
-# Examples
-# p1 = Pizza(["bacon", "parmesan", "ham"])    # order 1
-# p2 = Pizza.garden_feast()                  # order 2
-# p1.ingredients ➞ ["bacon", "parmesan", "ham"]
-#
-# p2.ingredients ➞ ["spinach", "olives", "mushroom"]
-#
-# p1.order_number ➞ 1
-#
-# p2.order_number ➞ 2
-# Notes
-# All words are given in lowercase.
-# See the Resources tab for some helpful tutorials on classes!
-# order_number = 0
-#
-# preset = {"hawaiian": ['ham', 'pineapple'],
-#           "meat_festival": ['beef', 'meatball', 'bacon'],
-#           "garden_feast": ['spinach', 'olives', 'mushroom']}
-# class Pizza:
-#     obj_count = 0
-#     def __init__(self, lst_ingredients):
-#         Pizza.obj_count += 1
-#         self.ingredients = lst_ingredients
-#         self.order_number = Pizza.obj_count
-# for key in preset:
-#     setattr(Pizza, key, eval("lambda: Pizza({})".format(str(preset[key]))))
+#################### GUI ####################
+from tkinter import *
 
-# Solution was copied!
+# widget = GUI elements: buttons, textboxes, labels, images
+# windows = serves as a container to hold or contain these widgets
 
-###########################
+window = Tk() # instantiate an instance of a window
+window.geometry("420x420") # measurement
+window.title("VC") # change window title
 
-# Fruit Smoothie
-# Create a class Smoothie and do the following:
-#
-# Create an instance attribute called ingredients.
-# Create a get_cost method which calculates the total cost of the ingredients used to make the smoothie.
-# Create a get_price method which returns the number from get_cost plus the number from get_cost
-# multiplied by 1.5. Round to two decimal places.
-# Create a get_name method which gets the ingredients and puts them in alphabetical order into a
-# nice descriptive sentence. If there are multiple ingredients, add the word "Fusion" to the end but
-# otherwise, add "Smoothie". Remember to change "-berries" to "-berry". See the examples below.
-# Ingredient	Price
-# Strawberries	$1.50
-# Banana	$0.50
-# Mango	$2.50
-# Blueberries	$1.00
-# Raspberries	$1.00
-# Apple	$1.75
-# Pineapple	$3.50
-# Examples
-# s1 = Smoothie(["Banana"])
-#
-# s1.ingredients ➞ ["Banana"]
-#
-# s1.get_cost() ➞ "$0.50"
-#
-# s1.get_price() ➞ "$1.25"
-#
-# s1.get_name() ➞ "Banana Smoothie"
-# s2 = Smoothie(["Raspberries", "Strawberries", "Blueberries"])
-#
-# s2.ingredients ➞ ["Raspberries", "Strawberries", "Blueberries"]
-#
-# s2.get_cost() ➞ "$3.50"
-#
-# s2.get_price() ➞ "$8.75"
-#
-# s2.get_name() ➞ "Blueberry Raspberry Strawberry Fusion"
-# Notes
-# Feel free to check out the Resources tab for a refresher on classes.
-#
-# menu = {
-# "Strawberries"  :  "$1.50",
-# "Banana"  : "$0.50",
-# "Mango" :   "$2.50",
-# "Blueberries"   : "$1.00",
-# "Raspberries"  :  "$1.00",
-# "Apple"   : "$1.75",
-# "Pineapple"  :  "$3.50"
-# }
-#
-# class Smoothie():
-#
-#     ingredients = None
-#     cost = 0
-#     price = 0
-#     def __init__(self, ingredients):
-#         self.ingredients = ingredients
-#         # print(self.ingredients)
-#
-#     def get_cost(self): # calculates the total cost of the ingredients used to make the smoothie.
-#         total_cost = ""
-#         for key,value in menu.items():
-#             for i in self.ingredients:
-#                 if (key == i):
-#                     total_cost = total_cost + value
-#
-#         total_cost = self.cost = str(eval(total_cost.replace("$", "+")))
-#         if total_cost.index(".") != 2:
-#             return "${total_cost}0".format(total_cost=total_cost)
-#         else:
-#             return "${total_cost}".format(total_cost=total_cost)
-#
-#     def get_price(self): # returns the number from get_cost plus the number from get_cost multiplied by 1.5.
-#         self.get_cost()
-#         self.price = str(eval(str(self.cost) + "+" +str(self.cost) + "*1.5" ))
-#         # return self.price.index(".")
-#         if self.price.index(".") != 1:
-#             return "${price}0".format(price=self.price)
-#         else:
-#             return "${price}".format(price=self.price)
-#
-#     def get_name(self): # gets the ingredients and puts them in alphabetical order into a nice descriptive sentence
-#         pass
-#
-# s1 = Smoothie(["Banana"])
-# s2 = Smoothie(["Raspberries", "Strawberries", "Blueberries"])
-# s3 = Smoothie(["Raspberries", "Strawberries"])
+icon = PhotoImage(file='voicentericon.png') # convort to photo image # changing icon
+window.iconphoto(True,icon)
+window.config(background="black") # "#000000"
 
-#
-# print(s1.get_cost(), s2.get_cost(),s3.get_cost())
-# print(s1.get_price(),s2.get_price(),s3.get_price())
 
-######################
+window.mainloop() # place window on computer screen. listens for events
 
-# Multiple Choice Tests
-# Your task is to write a program which allows teachers to create a multiple choice
-# test in a class called Testpaper and to be also able to assign a minimum pass mark.
-# The testpaper's subject should also be included. The attributes are in the following order:
-#
-# subject
-# markscheme
-# pass_mark
-# As well as that, we need to create student objects to take the test itself!
-# Create another class called Student and do the following:
-#
-# Create an attribute called tests_taken and set the default as 'No tests taken'.
-# Make a method called take_test(), which takes in the testpaper object they are
-# completing and the student's answers. Compare what they wrote to the mark scheme,
-# and append to the/create a dictionary assigned to tests_taken in the way as shown in the point below.
-# Each key in the dictionary should be the testpaper subject and each value should
-# be a string in the format seen in the examples below (whether or not the student
-# has failed, and their percentage in brackets).
 
-# Examples
-# paper1 = Testpaper("Maths", ["1A", "2C", "3D", "4A", "5A"], "60%")
-# paper2 = Testpaper("Chemistry", ["1C", "2C", "3D", "4A"], "75%")
-# paper3 = Testpaper("Computing", ["1D", "2C", "3C", "4B", "5D", "6C", "7A"], "75%")
-#
-# student1 = Student()
-# student2 = Student()
-# student1.tests_taken ➞ "No tests taken"
-# student1.take_test(paper1, ["1A", "2D", "3D", "4A", "5A"])
-# student1.tests_taken ➞ {"Maths" : "Passed! (80%)"}
-#
-# student2.take_test(paper2, ["1C", "2D", "3A", "4C"])
-# student2.take_test(paper3, ["1A", "2C", "3A", "4C", "5D", "6C", "7B"])
-# student2.tests_taken ➞ {"Chemistry" : "Failed! (25%)", "Computing" : "Failed! (43%)"}
-# Notes
-# Round percentages to the nearest whole number.
-# Remember that the attribute tests_taken should return 'No tests taken' when no tests have been taken yet.
-#
-#
-# class Testpaper():
-#
-#     def __init__(self,subject,markscheme,pass_mark):
-#         self.subject = subject
-#         self.markscheme = markscheme
-#         self.pass_mark = pass_mark
-#
-# class Student():
-#     tests_taken = "No tests taken"
-#     tests_done = {}
-#
-#     def take_test(self, object,answer):
-#         self.Subject = object.subject
-#         self.answer = answer
-#         Pass = 0
-#         presentage = int(object.pass_mark.replace("%",""))/100
-#
-#         for i in object.markscheme:
-#             indx = object.markscheme.index(i)
-#             if i == str(self.answer[indx]):
-#                 Pass += 1
-#
-#         print(len(object.markscheme))
-#         print(Pass)
-#         print(presentage)
-# paper1 = Testpaper("Maths", ["1A", "2C", "3D", "4A", "5A"], "60%")
-# paper2 = Testpaper("Chemistry", ["1C", "2C", "3D", "4A"], "75%")
-# paper3 = Testpaper("Computing", ["1D", "2C", "3C", "4B", "5D", "6C", "7A"], "75%")
-#
-# student1 = Student()
-# # student2 = Student()
-# student1.tests_taken# ➞ "No tests taken"
-# student1.take_test(paper1, ["1A", "2D", "3D", "4A", "5A"])
-# student1.tests_taken# ➞ {"Maths" : "Passed! (80%)"}
-#
-# # student2.take_test(paper2, ["1C", "2D", "3A", "4C"])
-# # student2.take_test(paper3, ["1A", "2C", "3A", "4C", "5D", "6C", "7B"])
-# # student2.tests_taken# ➞ {"Chemistry" : "Failed! (25%)", "Computing" : "Failed! (43%)"}
-#
-# NOT DONE YET!
 
-#############################
-# How Many Arguments?
-# Create a function that takes a function func and counts its arguments. Examining a function's bytecode using __code__ is disabled.
-#
-# Examples
-# num_args(lambda: "") ➞ 0
-#
-# num_args(lambda x: "") ➞ 1
-#
-# num_args(lambda x, y: "") ➞ 2
-# Notes
-# All random test function expressions will be constructed using +, -, *, and /.
-# None of the parameters of func will have default values.
-# All functions will be converted to a custom class object to avoid use of __code__.
-# If disabling __code__ or removing function functionality is too harsh, feel free to leave a comment.
-#
-# def num_arg(func):
-#   try:
-#     func()
-#     print("0")
-#   except TypeError as e:
-#     error = str(e)
-#     x = error.split(" ")
-#     return print(x[2])
-#   except Exception as z:
-#     print(z)
-#
-# num_arg(lambda x, z,y: "")
-# num_arg(lambda x: "")
 
-######################
-# Word Buckets
-# Write a function that divides a phrase into word buckets,
-# with each bucket containing n or fewer characters. Only include full words inside each bucket.
-#
-# Examples
-# split_into_buckets("she sells sea shells by the sea", 10)
-# ➞ ["she sells", "sea shells", "by the sea"]
-#
-# split_into_buckets("the mouse jumped over the cheese", 7)
-# ➞ ["the", "mouse", "jumped", "over", "the", "cheese"]
-#
-# split_into_buckets("fairy dust coated the air", 20)
-# ➞ ["fairy dust coated", "the air"]
-#
-# split_into_buckets("a b c d e", 2)
-# ➞ ["a", "b", "c", "d", "e"]
-# Notes
-# Spaces count as one character.
-# Trim beginning and end spaces for each word bucket (see final example).
-# If buckets are too small to hold a single word, return an empty list: []
-# The final goal isn't to return just the words with a length equal (or lower) to the given n,
-# but to return the entire given phrase bucketized (if possible).
-# So, for the specific case of "by" the only word with a proper length,
-# the phrase can't be bucketized, and the returned list has to be empty.
-#
-# def split_into_buckets(phrase, n):
-#   count = 0
-#   word_bulk = []
-#   def retry(count,word_bulk,n):
-#     if phrase[n - 1] == " ":
-#       word_bulk.append(phrase[count:count+n])
-#       count += n
-#       retry(count,word_bulk,n)
-#     else:
-#       word_bulk.append("")
-#   retry(count,word_bulk,n)
-#   print(word_bulk)
-# split_into_buckets("she sells sea shells by the sea", 10)
-# # ➞ ["she sells", "sea shells", "by the sea"]
-# #
-# split_into_buckets("the mouse jumped over the cheese", 7)
-# # ➞ ["the", "mouse", "jumped", "over", "the", "cheese"]
-# #
-# split_into_buckets("fairy dust coated the air", 20)
-# # ➞ ["fairy dust coated", "the air"]
-# #
-# split_into_buckets("a b c d e", 2)
-# # ➞ ["a", "b", "c", "d", "e"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
